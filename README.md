@@ -15,6 +15,7 @@ ClipForge is a simple Discord bot that lets you record and create video clips fr
 1. **Node.js**: Install Node.js and npm ([Download here](https://nodejs.org/)).
 2. **Caddy Web Server**: Install the Caddy web server ([Installation guide](https://caddyserver.com/docs/install)).
 3. **Git**: For cloning the repository.
+4. **VPS**: Use a VPS for best results. Mainly for the Hosting part. 
 
 ---
 
@@ -32,7 +33,6 @@ ClipForge is a simple Discord bot that lets you record and create video clips fr
    ```
 
 ---
-
 ## Configuration
 
 ### 1. Replace Necessary Values in `main.js`
@@ -86,14 +86,29 @@ The `open_browser.js` script is used for manual Discord login and session persis
 
 ## Usage
 
-1. Run the startup script to begin recording:
+1. Run the startup script (use tmux for persistence):
    ```bash
    ./start.sh
    ```
+# Discord Commands
 
-2. The `main.js` script will read session data from `user_data/` and interact with Discord as needed without requiring re-login.
+`/join`
 
-3. Access video clips via the `captures/` directory, hosted by the Caddy web server.
+Makes the bot join the current voice channel and starts recording. 
+
+`/clip`
+
+Saves a clip from the active recording. Default duration is 1 Minute.
+
+`/stop`
+
+Stops the continuous recording of the voice channel.
+
+`/leave`
+
+Disconnects the bot from the current voice channel.
+
+Clip will be sent to the Discord Channel (as URL not as File)
 
 ---
 ## Current Issues
@@ -102,6 +117,7 @@ Recording File Size: Currently, the bot continuously records, which causes the r
 
 ## Upcoming Features
 
+- **Process**: Make it a Process or Binary 
 - **OBS Integration**: Future updates will integrate OBS with its replay buffer to handle recording and clipping efficiently.
 - **Auto-Join Voice Calls**: The bot will automatically join a voice call when a user enters the channel.
 - **Discord Full Screen**: Support for full-screen Discord functionality.
