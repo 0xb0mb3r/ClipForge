@@ -1,8 +1,7 @@
 
 # ClipForge
-
-ClipForge is a simple Discord bot that lets you record and create video or audio clips from your Discord voice channels. It continuously records and makes it easy to save highlights without hassle. Clips are hosted through a web interface using the Caddy web server, so you can access them anytime.
 ---
+ClipForge is a simple Discord bot that lets you record and create video clips from your Discord voice channels. It continuously records and makes it easy to save highlights without hassle. Clips are hosted through a web interface using the Caddy web server, so you can access them anytime. 
 
 ## Features
 - Continuous video recording with clipping functionality.
