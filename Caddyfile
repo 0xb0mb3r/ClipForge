@@ -1,0 +1,24 @@
+{
+    email "your-email-address"
+}
+
+#your-domain-or-ip {
+    # Serve video files directly
+    root * /opt/clipforge/hosted
+    file_server {
+        index off
+    }
+
+    # Proxy all other paths to FileBrowser
+    reverse_proxy / localhost:9090 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    log {
+        output stdout
+        format console
+    }
+}
