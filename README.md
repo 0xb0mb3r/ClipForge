@@ -76,6 +76,33 @@ The `open_browser.js` script is used for manual Discord login and session persis
    root * /path/to/clipforge/captures
    file_server
    ```
+1.1 If you are using a Domain the Caddyfile will look similar to this: 
+```
+{
+    email email@example.com
+}
+
+example.com {
+    # Serve video files directly
+    root * /opt/clipforge/hosted
+    file_server {
+        index off
+    }
+
+    # Proxy all other paths to FileBrowser
+    reverse_proxy / localhost:9090 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    log {
+        output stdout
+        format console
+    }
+}
+````
 
 2. Start the Caddy web server:
    ```bash
